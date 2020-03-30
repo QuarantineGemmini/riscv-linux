@@ -75,6 +75,9 @@ void start_thread(struct pt_regs *regs, unsigned long pc,
 	regs->sepc = pc;
 	regs->sp = sp;
 	set_fs(USER_DS);
+
+  // [ssteffl]: enable custom extensions
+  regs->sstatus |= SR_XS_INITIAL;
 }
 
 void flush_thread(void)
